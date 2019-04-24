@@ -1,15 +1,28 @@
 <template>
   <div class="hello">
-    <div class="button">按钮</div>
-    <div class="buttonBig">大按钮</div>
+    <div class="button">按钮<svg-icon icon-class="xihuan" /></div>
+    <div class="buttonBig">大按钮<svg-icon icon-class="yonghu" style="width: 0.5rem"/></div>
+    <div>{{name}}</div>
+    <div>{{rootName}}</div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
   props: {
     msg: String
+  },
+  computed: {
+    ...mapState({
+      name: state => {
+        return state.home.name;
+      },
+      rootName: state => {
+        return state.name;
+      }
+    })
   }
 };
 </script>
@@ -30,7 +43,7 @@ export default {
   }
 
   .buttonBig {
-    width: 100px;
+    width: 200px;
     font-size: 26px;
   }
 }
